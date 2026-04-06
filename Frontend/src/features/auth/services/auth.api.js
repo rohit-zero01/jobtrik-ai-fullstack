@@ -31,7 +31,13 @@ export async function login({ email, password }) {
             email, password
         })
 
-        return response.data
+        // return response.data
+        const data = response.data;
+
+// store token
+localStorage.setItem("token", data.token || data.accessToken);
+
+return data;
 
     } catch (err) {
         console.log(err)
@@ -55,7 +61,15 @@ export async function getMe() {
 
     try {
 
-        const response = await api.get("/api/auth/get-me")
+        // const response = await api.get("/api/auth/get-me")
+
+        const token = localStorage.getItem("token");
+
+const response = await api.get("/api/auth/get-me", {
+    headers: {
+        Authorization: `Bearer ${token}`
+    }
+});
 
         return response.data
 
