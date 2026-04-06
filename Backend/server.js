@@ -10,7 +10,7 @@ connectToDB();
 app.use(require("express").static(path.join(__dirname, "dist")));
 
 // Fallback route
-app.get("/*", (req, res) => {
+app.use((req, res) => {
   res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
