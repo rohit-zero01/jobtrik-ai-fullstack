@@ -7,7 +7,7 @@ const app = express()
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
-    origin: "*",
+    origin: "https://jobtrik-ai-fullstack.onrender.com",
     credentials: true
 }))
 
