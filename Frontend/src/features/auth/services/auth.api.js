@@ -10,9 +10,12 @@ const api = axios.create({
 export async function register({ username, email, password }) {
 
     try {
-        const response = await api.post('/api/auth/register', {
-            username, email, password
-        })
+        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL || "http://localhost:3000"}/api/auth/register`, {
+    username, 
+    email, 
+    password
+});
+
 
         return response.data
 
@@ -28,9 +31,11 @@ export async function login({ email, password }) {
 
     try {
 
-        const response = await api.post("/api/auth/login", {
-            email, password
-        })
+        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL || "http://localhost:3000"}/api/auth/login`, {
+    email, 
+    password
+});
+
 
         // return response.data
         const data = response.data;
